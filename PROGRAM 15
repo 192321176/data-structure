@@ -1,0 +1,42 @@
+15.
+	Given an array of size N-1 such that it only contains distinct integers in the 
+range of 1 to N. Find the missing element.
+Input:
+N = 5
+A[] = {1,2,3,5}
+Output: 4
+Input:
+N = 10
+A[] = {6,1,2,8,3,4,7,10,5}
+Output: 9
+
+CODE:
+
+#include <stdio.h>
+
+int findMissingElement(int arr[], int n) {
+    int total = (n + 1) * (n + 2) / 2;
+    for (int i = 0; i < n; i++) {
+        total -= arr[i];
+    }
+    return total;
+}
+
+int main() {
+    int arr1[] = {1, 2, 3, 5};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int missingElement1 = findMissingElement(arr1, n1);
+    printf("Missing element in the first array: %d\n", missingElement1);
+
+    int arr2[] = {6, 1, 2, 8, 3, 4, 7, 10, 5};
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    int missingElement2 = findMissingElement(arr2, n2);
+    printf("Missing element in the second array: %d\n", missingElement2);
+
+    return 0;
+}
+
+OUTPUT:
+
+Missing element in the first array: 4
+Missing element in the second array: 9
