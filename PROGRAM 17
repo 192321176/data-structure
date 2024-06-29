@@ -1,0 +1,74 @@
+17.
+	Write a program to perform insert and delete operations in a queue
+Example : 12,34,56,78
+After insertion of 60  content of the  queue is 12,34,56,78,60
+After deletion of 12 , the contents of the queue : 34,56,78,60
+
+CODE:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 5
+
+int queue[MAX_SIZE];
+int front = -1, rear = -1;
+
+void insert(int value) {
+    if (rear == MAX_SIZE - 1) {
+        printf("Queue is full. Cannot insert %d\n", value);
+    } else {
+        if (front == -1) {
+            front = 0;
+        }
+        rear++;
+        queue[rear] = value;
+    }
+}
+
+void delete() {
+    if (front == -1) {
+        printf("Queue is empty. Cannot delete.\n");
+    } else {
+        printf("Deleted element: %d\n", queue[front]);
+        if (front == rear) {
+            front = rear = -1;
+        } else {
+            front++;
+        }
+    }
+}
+
+void display() {
+    if (front == -1) {
+        printf("Queue is empty.\n");
+    } else {
+        printf("Contents of the queue: ");
+        for (int i = front; i <= rear; i++) {
+            printf("%d ", queue[i]);
+        }
+        printf("\n");
+    }
+}
+
+int main() {
+    insert(12);
+    insert(34);
+    insert(56);
+    insert(78);
+    insert(60);
+
+    display();
+
+    delete();
+
+    display();
+
+    return 0;
+}
+
+OUTPUT:
+
+Contents of the queue: 12 34 56 78 60 
+Deleted element: 12
+Contents of the queue: 34 56 78 60 
