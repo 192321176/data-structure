@@ -1,0 +1,34 @@
+10.
+	Given a string s, find the frequency of characters
+Example 1:
+Input: s = "tree"
+Output t->1, r->1, e->2
+
+CODE:
+
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char s[] = "tree";
+    int freq[256] = {0};
+    int i;
+
+    for (i = 0; s[i] != '\0'; i++) {
+        freq[s[i]]++;
+    }
+
+    for (i = 0; i < 256; i++) {
+        if (freq[i] != 0) {
+            printf("%c -> %d\n", i, freq[i]);
+        }
+    }
+
+    return 0;
+}
+
+OUTPUT:
+
+e -> 2
+r -> 1
+t -> 1
